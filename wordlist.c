@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
   FILE *fp;
 
   if(argc < 2) {
-    fprintf(stdout, "Use: %s [directory]\n", argv[0]);
+    fprintf(stdout, "Use: %s <directory>\n", argv[0]);
     exit(0);
   }
 
