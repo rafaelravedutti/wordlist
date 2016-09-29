@@ -9,8 +9,88 @@
 #define WORDS_DELIMITERS        " \n"
 #define MAX_PATH_LENGTH         128
 #define MAX_WORD_LENGTH         64
+#define WORD_HASH_SIZE          38
 
-void retrieve_file_words(const char *filename, FILE *output) {
+/* Word Operations */
+#define WORD_LIST_INSERT        1
+#define WORD_LIST_FREE          2
+#define WORD_LIST_WRITE         3
+
+struct word_list {
+  char wl_word[MAX_WORD_LENGTH];
+  struct word_list *wl_next;
+};
+
+void wordlistctl(int op, const char *word) {
+  FILE *fp;
+  static struct word_list *wl[WORD_HASH_SIZE];
+  static int initialized = 0;
+  struct word_list *p, *q;
+  unsigned int h, i, len;
+
+  if(initialized == 0) {
+    for(i = 0; i < WORD_HASH_SIZE; ++i) {
+      wl[i] = NULL;
+    }
+
+    initialized = 1;
+  }
+
+  if(op == WORD_LIST_INSERT) {
+    len = strlen(word);
+
+    if(len > MAX_WORD_LENGTH) {
+      len = MAX_WORD_LENGTH;
+    }
+
+    h = (word[0] >= 'a' && word[0] <= 'z') ? (word[0] - 'a') :
+        (word[0] >= 'A' && word[0] <= 'Z') ? (word[0] - 'A') :
+        (word[0] >= '0' && word[0] <= '9') ? (word[0] - '0' + 'z' - 'a') : (WORD_HASH_SIZE - 1);
+
+    if(wl[h] == NULL) {
+      wl[h] = (struct word_list *) malloc(sizeof(struct word_list));
+      wl[h]->wl_next = NULL;
+      strncpy(wl[h]->wl_word, word, len);
+    } else {
+      for(p = wl[h]; p != NULL; p = p->wl_next) {
+        if(strncmp(p->wl_word, word, len) == 0) {
+          return;
+        }
+      }
+
+      p = (struct word_list *) malloc(sizeof(struct word_list));
+      p->wl_next = wl[h];
+      strncpy(p->wl_word, word, len);
+      wl[h] = p;
+    }
+  } else if(op == WORD_LIST_FREE) {
+    for(i = 0; i < WORD_HASH_SIZE; ++i) {
+      for(p = wl[i], q = NULL; p != NULL; q = p, p = p->wl_next) {
+        if(q != NULL) {
+          free(q);
+        }
+      }
+
+      if(q != NULL) {
+        free(q);
+      }
+
+      wl[i] = NULL;
+    }
+  } else if(op == WORD_LIST_WRITE) {
+    if((fp = fopen(word, "w")) != NULL) {
+      for(i = 0; i < WORD_HASH_SIZE; ++i) {
+        for(p = wl[i]; p != NULL; p = p->wl_next) {
+          fprintf(fp, "%s\n", p->wl_word);
+        }
+      }
+
+      fclose(fp);
+    }
+  }
+}
+
+void retrieve_file_words(const char *filename) {
   FILE *fp;
   char buffer[MAX_WORD_LENGTH];
   char *word_ptr;
@@ -22,15 +102,15 @@ void retrieve_file_words(const char *filename, FILE *output) {
 
   while(fgets(buffer, sizeof buffer, fp) != NULL) {
     word_ptr = strtok(buffer, WORDS_DELIMITERS);
-    fprintf(output, "%s\n", word_ptr);
+    wordlistctl(WORD_LIST_INSERT, word_ptr);
 
     while((word_ptr = strtok(NULL, WORDS_DELIMITERS)) != NULL) {
-      fprintf(output, "%s\n", word_ptr);
+      wordlistctl(WORD_LIST_INSERT, word_ptr);
     }
   }
 }
 
-void scan_directory_words(char *path, FILE *output) {
+void scan_directory_words(char *path) {
   DIR *directory;
   char new_path[MAX_PATH_LENGTH];
   struct dirent *ent;
@@ -47,9 +127,9 @@ void scan_directory_words(char *path, FILE *output) {
         }
 
         if((ent_stat.st_mode & S_IFMT) == S_IFDIR) {
-          scan_directory_words(new_path, output); 
+          scan_directory_words(new_path); 
         } else {
-          retrieve_file_words(new_path, output);
+          retrieve_file_words(new_path);
         }
       }
     }
@@ -59,17 +139,13 @@ void scan_directory_words(char *path, FILE *output) {
 }
 
 int main(int argc, char *argv[]) {
-  FILE *fp;
-
   if(argc < 2) {
     fprintf(stdout, "Use: %s <directory>\n", argv[0]);
     exit(0);
   }
 
-  if((fp = fopen(OUTPUT_FILE, "w")) != NULL) {
-    scan_directory_words(argv[1], fp);
-    fclose(fp);
-  }
-
+  scan_directory_words(argv[1]);
+  wordlistctl(WORD_LIST_WRITE, OUTPUT_FILE);
+  wordlistctl(WORD_LIST_FREE, NULL);
   return 0;
 }
