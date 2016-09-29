@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 
 #define OUTPUT_FILE             "dictionary.txt"
-#define WORDS_DELIMITERS        " \n"
+#define WORD_DELIMITERS        " \n"
 #define MAX_PATH_LENGTH         128
 #define MAX_WORD_LENGTH         64
 #define WORD_HASH_SIZE          38
@@ -101,10 +101,10 @@ void retrieve_file_words(const char *filename) {
   }
 
   while(fgets(buffer, sizeof buffer, fp) != NULL) {
-    word_ptr = strtok(buffer, WORDS_DELIMITERS);
+    word_ptr = strtok(buffer, WORD_DELIMITERS);
     wordlistctl(WORD_LIST_INSERT, word_ptr);
 
-    while((word_ptr = strtok(NULL, WORDS_DELIMITERS)) != NULL) {
+    while((word_ptr = strtok(NULL, WORD_DELIMITERS)) != NULL) {
       wordlistctl(WORD_LIST_INSERT, word_ptr);
     }
   }
