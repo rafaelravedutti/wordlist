@@ -5,10 +5,10 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-#define OUTPUT_FILE             "dictionary.txt"
-#define WORD_DELIMITERS        " \n"
+#define OUTPUT_FILE             "dicionario.txt"
+#define WORD_DELIMITERS        " ,\n"
 #define MAX_PATH_LENGTH         128
-#define MAX_WORD_LENGTH         64
+#define MAX_WORD_LENGTH         128
 #define WORD_HASH_SIZE          38
 
 /* Word Operations */
@@ -37,6 +37,10 @@ void wordlistctl(int op, const char *word) {
   }
 
   if(op == WORD_LIST_INSERT) {
+    if(word == NULL) {
+      return;
+    }
+
     len = strlen(word);
 
     if(len > MAX_WORD_LENGTH) {
@@ -108,6 +112,8 @@ void retrieve_file_words(const char *filename) {
       wordlistctl(WORD_LIST_INSERT, word_ptr);
     }
   }
+
+  fclose(fp);
 }
 
 void scan_directory_words(char *path) {
