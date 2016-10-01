@@ -10,6 +10,7 @@ do
 musicado
 legiaourbana
 MusicaDoLegiaoUrbanaAe
+MusicaDaLegiaoUrbanae
     #
     1965 (Duas Tribos)
     violão
