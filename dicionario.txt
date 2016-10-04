@@ -182,7 +182,6 @@ antes
 ascendente
 amar
 arrependeu
-Agora
 Asa
 amigos
 acabou
@@ -200,6 +199,15 @@ aos
 ali
 aquilo
 altar
+achei:
+ao
+algo
+Agimos
+aqui
+Além
+Aonde
+Agora
+acertar
 até
 amizade
 atrás
@@ -443,7 +451,6 @@ buddy
 brandon
 bradley
 booboo
-bob
 black
 beavis
 basketball
@@ -461,7 +468,6 @@ bear
 buster
 baseball
 belo
-bem
 burguesia
 bandeirinhas
 boçal
@@ -470,7 +476,6 @@ brinques
 banca
 bomba
 boto
-bom
 bagulho
 Bolívia
 bisavô
@@ -479,6 +484,9 @@ bestificado
 boiadeiro
 brincar
 bandido
+bem?
+bobagem
+bom
 Brasília
 barra
 Batalharam
@@ -751,7 +759,6 @@ começou
 crente
 começasse
 contrabando
-certo
 cão
 consequências
 colégio
@@ -778,6 +785,12 @@ caixinha
 colocavam
 cercania
 Cristo
+Cavalos-marinhos
+cuidar
+continua
+comigo
+certo
+Chegar
 Construíram
 completa
 comemoraram
@@ -1006,6 +1019,10 @@ dinheiro
 deu
 Deixou
 diziam
+Dentro
+direção
+distrai
+descansar
 dá
 depois
 decidiu
@@ -1111,7 +1128,6 @@ esqueço
 essa
 estou
 escolher
-embora
 embebedou
 estava
 entrar
@@ -1128,6 +1144,13 @@ encontrou
 entendia
 escolheu
 escolha
+embora.
+entregar
+Existe
+errou
+embora
+esquecer
+está
 ela
 Ele
 explicava
@@ -1282,13 +1305,10 @@ freedom
 falcon
 fuckyou
 fuckme
-forte
 filmava
 frente
 fez
 Falou
-faço
-Foi
 Federal
 frequentava
 Fez
@@ -1299,6 +1319,11 @@ falar
 funcionava
 foi
 fazenda
+ficarmos
+feliz
+Foi
+faço
+forte
 filhinho
 férias
 feijão
@@ -1563,7 +1588,6 @@ hannah
 hal9000
 howard
 hornet
-horizon
 hoops
 herbert
 hector
@@ -1592,6 +1616,7 @@ harley
 hello
 história
 homem
+horizonte
 há
 horas
 Home/Rise
@@ -1650,7 +1675,6 @@ internet
 inocentes
 incerto
 irmão
-isso
 indecorosa
 inferno
 influência
@@ -1659,6 +1683,7 @@ indo
 ia
 igreja
 Ia
+isso
 inglês
 impressionar
 irá
@@ -1790,10 +1815,10 @@ jurei
 já
 Jeremias
 jornal
-Já
 Juntou
 Jesus
 João
+Já
 juntos
 jogava
 Janela
@@ -1981,6 +2006,10 @@ luzes
 lá
 lugar
 lhe
+Lembra
+linha
+longe
+levando
 Leão
 lanchonete
 legal
@@ -2247,6 +2276,9 @@ morava
 morreu
 marasmo
 medo
+mar
+mim?
+mesma
 menos
 muitas
 mês
@@ -2463,13 +2495,15 @@ oliver
 orange
 ou812
 olhada
-Olha
 olhou
 Organizou
 olhar
 ouvia
 Onde
 onde
+Olha
+olhavamos
+onda
 outro
 olhos
 Outra
@@ -2662,7 +2696,6 @@ pras
 pelas
 povo
 porco
-planos
 Planaltina
 parceiro
 palavras
@@ -2678,7 +2711,6 @@ primeira
 pela
 primeiro
 plantação
-plano
 Pablo
 peruano
 proposta
@@ -2691,6 +2723,10 @@ poder
 para
 professor
 perdeu
+posso
+planos
+pedras
+praia
 Porque
 pesada
 passou
@@ -2739,8 +2775,9 @@ q1w2e3
 quest
 quality
 qwerty
-quero
 quinze
+Quero
+quero
 quando
 queria
 quase
@@ -3278,6 +3315,7 @@ Sentia
 soldado
 sentir
 Santo
+subir
 saudade
 seguraram
 sobre
@@ -3466,10 +3504,8 @@ test
 tigger
 teus
 tempestade
-tão
 temos
 Temos
-tenho
 Todos
 tiros
 teu
@@ -3479,7 +3515,6 @@ traidor
 trouxe
 Traficante
 trabalhando
-tempo
 ter"
 temido
 traficantes
@@ -3494,6 +3529,10 @@ terror
 tiro
 trás
 tal
+tempo
+tenho
+tão
+tarde
 tá
 tiveram
 também
@@ -3613,8 +3652,11 @@ virar
 vivia
 visitar
 viagem
-vida
 velhinhas
+vida
+vejo
+Vai
+vento
 verão
 voltaram
 vieram
@@ -3757,6 +3799,8 @@ yukon
 yoda
 yankees
 yellow
+yey
+Yey
 zhongguo
 Zxcvbnm
 Zxcvb
@@ -3896,6 +3940,7 @@ zona
 "Maria
 ônibus
 ódio
+-
 (não!)
 água
 "É
